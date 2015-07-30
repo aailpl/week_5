@@ -1,0 +1,21 @@
+<div class="container">
+	<h1></h1>
+	<div class="row">
+		<div class="jumbotron">
+		  <h1><%= @post.title %></h1>
+		  <p style="word-wrap:break-word;"><%= @post.content %></p>
+		  <p>
+		  	<a class="btn btn-primary btn-lg" href="/post/edit/<%= @post.id %>" role="button">Edit</a>
+		  	<a class="btn btn-success btn-lg" href="/comment/new?id=<%= @post.id %>" role="button">Add Comment</a>
+		  </p>
+		</div>
+	</div>	
+	<div class="row">
+		<% @post.comments.each do |comment|%>
+			<blockquote>
+			  <p><%= comment.content %></p>
+			  <footer><%= comment.user %> at <cite title="Source Title"><%= comment.created_at.strftime("%I:%M%p %F") %></cite></footer>
+			</blockquote>
+		<% end %> 
+	</div>
+</div>
